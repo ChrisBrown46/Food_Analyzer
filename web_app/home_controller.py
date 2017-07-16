@@ -1,6 +1,5 @@
 from flask import Flask
 from flask import render_template
-from flask import request
 
 
 app = Flask(__name__)
@@ -8,8 +7,8 @@ app = Flask(__name__)
 
 @app.route('/handle_data', methods = ['POST'])
 def handle_data():
-    print(request.form['Name'])
-    return render_template('home.html')
+    # print(request.form['Name'])
+    return render_template('analyzer.html')
 
 
 @app.route('/')
