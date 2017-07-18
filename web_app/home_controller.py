@@ -1,19 +1,20 @@
+import logging
+
 from flask import Flask
 from flask import render_template
 
+from scraper import scrape_wikipedia
+
 
 app = Flask(__name__)
+logger = logging.getLogger('logger')
 
 
-@app.route('/handle_data', methods = ['POST'])
-def handle_data():
-    # print(request.form['Name'])
-    return render_template('analyzer.html')
-
-
-@app.route('/')
+@app.route('/', methods = ['GET', 'POST'])
 def hello_world():
-    return render_template('home.html')
+    additional_information = (scrape_wikipedia("https://en.wikipedia.org/wiki/Pizza"))
+    return render_template('home.html',
+                           additionalInformation = additional_information)
 
 
 if __name__ == '__main__':
