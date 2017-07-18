@@ -11,8 +11,8 @@ logger = logging.getLogger('logger')
 
 
 @app.route('/', methods = ['GET', 'POST'])
-def hello_world():
-    additional_information = (scrape_wikipedia("https://en.wikipedia.org/wiki/Pizza"))
+def hello_world(food = 'clam_chowder'):
+    additional_information = (scrape_wikipedia('https://en.wikipedia.org/wiki/' + food))
     return render_template('home.html',
                            additionalInformation = additional_information)
 

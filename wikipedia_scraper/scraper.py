@@ -23,7 +23,7 @@ def get_wikipedia_page_text(link):
         logger.error('Could not find wikipedia page', e)
         return ''
 
-    regex = r'<\/a>.<\/p>.<p>(.+?)<div id'
+    regex = r'<p>(.+?)<div '
     results = re.search(regex, page_text, re.S)
 
     try:
