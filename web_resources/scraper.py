@@ -9,6 +9,7 @@ from selenium import webdriver
 logger = logging.getLogger('logger')
 driver = webdriver.PhantomJS(
     executable_path = '../phantomjs-2.1.1-windows/bin/phantomjs.exe',
+    service_log_path = '../logs/ghostdriver.log',
     service_args = ['--ignore-ssl-errors=true']
 )
 
