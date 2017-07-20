@@ -52,7 +52,7 @@
         <h2 class="w3-text-light-grey">Analyzer</h2>
         <hr style="width:200px" class="w3-opacity">
 
-        <!-- Grid for pricing tables -->
+        <!-- Grid for Nutrition Information and Food Image -->
         <div class="w3-row-padding" style="margin:0 -16px">
             <div class="w3-half w3-margin-bottom">
                 <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
@@ -73,30 +73,14 @@
 
             <div class="w3-half">
                 <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-                    <li class="w3-dark-grey w3-xlarge w3-padding-32">Clam Chowder 100g | %DV</li>
-                    <li class="w3-large w3-padding-16"><b>154 Calories | 8%</b></li>
-                    <li class="w3-padding-16">8.2g Protein | 16%</li>
-                    <li class="w3-padding-16">5.1g Total Fat | 8%</li>
-                    <li class="w3-padding-16">2.1g Saturated Fat | 8%</li>
-                    <li class="w3-padding-16">17.6mg Cholesterol | 6%</li>
-                    <li class="w3-padding-16">18.6g Carbs | 6%</li>
-                    <li class="w3-padding-16">902mg Sodium | 38%</li>
-                    <li class="w3-padding-16">7.1g Sugars</li>
-                    {#
-
-                     1 google: self nutrition data clam chowder
-                     2 get the first google result that matches the website
-                     3 take the first result and make it big, take the next and make it bold and big
-                     3 this can be done by getting 2 values that are not part of the loop
-                     4 loop through the rest (loop is commented)
-                       {% for food in food_list %}
-                           <li class="w3-padding-16">{{ food }}</li>
-                       {% endfor %}
-
-                     #}
+                    <li class="w3-dark-grey w3-xlarge w3-padding-32">{{ food }}</li>
+                    <li class="w3-large w3-padding-16"><b>{{ calories }}</b></li>
+                    {% for item in nutrition_info %}
+                        <li class="w3-padding-16">{{ item }}</li>
+                    {% endfor %}
                 </ul>
             </div>
-            <!-- End Grid/Pricing tables -->
+            <!-- End Nutrition Information and Food Image Section -->
         </div>
     </div>
 

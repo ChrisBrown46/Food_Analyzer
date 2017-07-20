@@ -78,9 +78,12 @@ def get_self_nutrition_page_text(page_text):
         results = re.search(regex, page_text, re.S)
         nutrition_list.append(results.group(1) + ' Sodium | ' + results.group(2))
 
-        regex = r'Sugars(.+?g)'
+        regex = r'Sugars(~|.+?g)'
         results = re.search(regex, page_text, re.S)
-        nutrition_list.append(results.group(1) + ' Sugars')
+        if results.group(1) == '~':
+            nutrition_list.append('No Sugars')
+        else:
+            nutrition_list.append(results.group(1) + ' Sugars')
 
         return nutrition_list
 
@@ -105,9 +108,6 @@ def get_website_html(link):
 
 def get_website_text(link):
     try:
-        temp = requests.get(link, timeout = 2).text
-        results = re.search(r'<param', temp)
-        print(results)
         return requests.get(link, timeout = 2).text
     except Exception as e:
         logger.error('Could not find web page page', e)
@@ -121,7 +121,9 @@ def strip_whitespace(page_text):
 
 def strip_html(page_text):
     regex = r'<(.+?)>'
-    return re.sub(regex, '', page_text)
+    intermediate_text = re.sub(regex, '', page_text)
+    regex = r'&nbsp;'
+    return re.sub(regex, '', intermediate_text)
 
 
 def strip_reference_blocks(page_text):
