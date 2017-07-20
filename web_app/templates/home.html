@@ -75,8 +75,8 @@
                 <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
                     <li class="w3-dark-grey w3-xlarge w3-padding-32">{{ food }}</li>
                     <li class="w3-large w3-padding-16"><b>{{ calories }}</b></li>
-                    {% for item in nutrition_info %}
-                        <li class="w3-padding-16">{{ item }}</li>
+                    {% for nutrient in nutrition_info %}
+                        <li class="w3-padding-16">{{ nutrient }}</li>
                     {% endfor %}
                 </ul>
             </div>

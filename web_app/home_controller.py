@@ -3,8 +3,8 @@ import logging
 from flask import Flask
 from flask import render_template
 
-from scraper import get_nutrition_info
-from scraper import scrape_wikipedia
+from nutrition_scraper import get_nutrition_info
+from wikipedia_scraper import scrape_wikipedia
 
 
 app = Flask(__name__)
