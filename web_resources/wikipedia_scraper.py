@@ -1,11 +1,8 @@
-import logging
 import re
 
 import cleaner
 import scraper
-
-
-logger = logging.getLogger('logger')
+from annotations import return_errors_as_empty_string
 
 
 def scrape_wikipedia(item):
@@ -19,12 +16,9 @@ def scrape_wikipedia(item):
     return page_text
 
 
+@return_errors_as_empty_string
 def get_wikipedia_page_text(page_text):
     regex = r'<p>(.+?)<div '
     results = re.search(regex, page_text, re.S)
 
-    try:
-        return results.group(1)
-    except Exception as e:
-        logger.error('Could not parse wikipedia page', e)
-        return ''
+    return results.group(1)

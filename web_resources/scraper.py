@@ -1,11 +1,10 @@
-import logging
-
 import requests
 from google import search
 from selenium import webdriver
 
+from annotations import return_errors_as_empty_string
 
-logger = logging.getLogger('logger')
+
 driver = webdriver.PhantomJS(
     executable_path = '../phantomjs-2.1.1-windows/bin/phantomjs.exe',
     service_log_path = '../logs/ghostdriver.log',
@@ -13,23 +12,18 @@ driver = webdriver.PhantomJS(
 )
 
 
+@return_errors_as_empty_string
 def get_google_result(query):
     for url in search(query, stop = 1):
         return url
 
 
+@return_errors_as_empty_string
 def get_website_html(link):
-    try:
-        driver.get(link)
-        return driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
-    except Exception as e:
-        logger.error('Could not find web page', e)
-        return ''
+    driver.get(link)
+    return driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
 
 
+@return_errors_as_empty_string
 def get_website_text(link):
-    try:
-        return requests.get(link, timeout = 2).text
-    except Exception as e:
-        logger.error('Could not find web page page', e)
-        return ''
+    return requests.get(link, timeout = 2).text
