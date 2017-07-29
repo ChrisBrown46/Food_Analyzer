@@ -2,7 +2,7 @@ import logging
 import traceback
 
 
-logging.basicConfig(filename = 'log.log', level = logging.ERROR, filemode = 'w',
+logging.basicConfig(filename = 'log.log', level = logging.DEBUG, filemode = 'w',
                     format = '%(asctime)s %(message)s', datefmt = '%m/%d/%Y %I:%M:%S %p')
 
 
@@ -11,7 +11,7 @@ def return_errors_as_empty_string(func):
 
     def wrapper(*args, **kwargs):
         try:
-            func(*args, **kwargs)
+            return func(*args, **kwargs)
         except:
             error_to_log = ' ERROR:\n'
 

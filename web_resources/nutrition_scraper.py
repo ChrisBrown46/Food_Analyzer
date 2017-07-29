@@ -44,7 +44,7 @@ def get_self_nutrition_page_text(page_text):
     results = re.search(regex, page_text, re.S)
     nutrition_list.append(results.group(1) + ' Carbohydrates | ' + results.group(2))
 
-    regex = r'%Sodium(.+?g)(.+?%)'
+    regex = r'.+?Sodium(.+?g)(.+?%)'
     results = re.search(regex, page_text, re.S)
     nutrition_list.append(results.group(1) + ' Sodium | ' + results.group(2))
 
