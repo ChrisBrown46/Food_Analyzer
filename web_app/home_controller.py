@@ -41,4 +41,5 @@ def execute(food = 'chicken_pot_pie'):
 
 
 if __name__ == '__main__':
+    print('Starting web app...')
     app.run()
