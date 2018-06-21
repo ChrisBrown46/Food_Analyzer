@@ -1,3 +1,7 @@
+.box__input > input {
+    display: none;
+}
+
 /* Css and html template acquired from W3 schools */
 
 body, h1, h2, h3, h4, h5, h6 {

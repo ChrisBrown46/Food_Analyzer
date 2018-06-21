@@ -2,8 +2,7 @@ import logging
 
 from cv2 import cv2
 
-
-logger = logging.getLogger('logger')
+logger = logging.getLogger("logger")
 
 
 def image_to_numpy_bgr_array(image_path):

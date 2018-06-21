@@ -17,4 +17,10 @@ $(document).ready(function () {
             'margin-top': ((nutrition_height - 200) / 2) + 'px',
             'padding': '0'
         });
+
+    jQuery.event.props.push('dataTransfer');
+    $('.box').bind('drop', function (e) {
+        let files = e.dataTransfer.files;
+    });
+
 });
