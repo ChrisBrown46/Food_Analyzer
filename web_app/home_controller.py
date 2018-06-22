@@ -2,6 +2,7 @@ import logging
 
 from flask import Flask
 from flask import render_template
+from flask import request
 
 from nutrition_scraper import get_nutrition_info
 from wikipedia_scraper import scrape_wikipedia
@@ -29,7 +30,13 @@ def parse_nutrition_info(food):
 
 
 @app.route("/", methods=["GET", "POST"])
-def execute(food="carrot cake"):
+def execute():
+    food = "carrot cake"
+    picture = request.form.get("picture", None)
+    if picture is not None:
+        # TODO: GENERATE FOOD ITEM BASED ON PICTURE
+        food = "chocolate cake"
+
     additional_information = scrape_wikipedia(food)
     food, calories, nutrition_info = parse_nutrition_info(food)
     return render_template(

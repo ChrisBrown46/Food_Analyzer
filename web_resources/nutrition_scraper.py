@@ -15,6 +15,7 @@ def get_nutrition_info(food):
     return nutrition_list
 
 
+# TODO: Use a HTML Parser
 @return_errors_as_empty_string
 def get_self_nutrition_page_text(page_text):
     nutrition_list = []
