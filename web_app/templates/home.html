@@ -57,12 +57,15 @@
 
         <!-- Grid for Nutrition Information and Food Image -->
         <div class="w3-row-padding" style="margin:0 -16px">
-            <form class="box" method="post" action="{{ url_for('execute') }}">
+            <form class="box" method="post"
+                  action="{{ url_for('execute') }}"
+                  enctype="multipart/form-data">
                 <label class="w3-half w3-margin-bottom box__input w3-opacity w3-hover-opacity-off"
                        for="file-input"
-                       ondragenter=""
-                       ondragover=""
-                       ondrop=""> <!-- TODO: FILL IN DROP EVENTS -->
+                       ondragenter="file_drag_enter(event)"
+                       ondragover="stop_event(event);"
+                       ondragleave="file_drag_leave(event);"
+                       ondrop="upload_file(event);">
 
                     <img class="resize_fit_center"
                          src="{{ url_for('static', filename='images/drag_drop_icon.png') }}"/>

@@ -31,8 +31,9 @@ def parse_nutrition_info(food):
 
 @app.route("/", methods=["GET", "POST"])
 def execute():
+    # Only accepts the first image. Iterate through files to get everything.
     food = "carrot cake"
-    picture = request.form.get("picture", None)
+    picture = request.files.get("picture", None)
     if picture is not None:
         # TODO: GENERATE FOOD ITEM BASED ON PICTURE
         food = "chocolate cake"
