@@ -12,7 +12,14 @@ logger = logging.getLogger("logger")
 
 
 def reformat_food(food):
-    split_food = food.split("_")
+    split_food_spaces = food.split(" ")
+    split_food_underlines = food.split("_")
+    split_food = (
+        split_food_spaces
+        if len(split_food_spaces) > len(split_food_underlines)
+        else split_food_underlines
+    )
+
     food = ""
     for piece in split_food:
         food += piece.capitalize() + " "
@@ -31,7 +38,7 @@ def parse_nutrition_info(food):
 
 @app.route("/", methods=["GET", "POST"])
 def execute():
-    # Only accepts the first image. Iterate through files to get everything.
+    # Only accepts the first image.
     food = "carrot cake"
     picture = request.files.get("picture", None)
     if picture is not None:
@@ -40,6 +47,7 @@ def execute():
 
     additional_information = scrape_wikipedia(food)
     food, calories, nutrition_info = parse_nutrition_info(food)
+
     return render_template(
         "home.html",
         food=food,
