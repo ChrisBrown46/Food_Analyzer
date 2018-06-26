@@ -34,11 +34,12 @@ function upload_file(event) {
 }
 
 function file_drag_enter(event) {
-    document.getElementById('file-label').classList.remove('w3-opacity');
+    document.getElementById("file-label").classList.remove("w3-opacity");
     stop_event(event);
 }
 
 function file_drag_leave(event) {
-    document.getElementById('file-label').classList.add('w3-opacity');
+    document.getElementById("file-label").classList.add("w3-opacity");
+
     stop_event(event);
 }

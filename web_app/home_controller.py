@@ -10,6 +10,9 @@ from wikipedia_scraper import scrape_wikipedia
 app = Flask(__name__)
 logger = logging.getLogger("logger")
 
+with open('./../README.md', 'r') as file:
+    readme_text = [line.rstrip('\n') for line in file]
+
 
 def reformat_food(food):
     split_food_spaces = food.split(" ")
@@ -54,6 +57,7 @@ def execute():
         calories=calories,
         nutrition_info=nutrition_info,
         additionalInformation=additional_information,
+        readme_text=readme_text,
     )
 
 
